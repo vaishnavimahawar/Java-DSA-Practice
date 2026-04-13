@@ -1,4 +1,4 @@
-# Day 04 - Second Largest Element
+# Day 03 - Second Largest Element
 
 ## Problem
 Find the second largest element in an array.
