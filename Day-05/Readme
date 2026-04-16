@@ -1,0 +1,5 @@
+Day 5 - Valid Parentheses
+
+Solved using Stack.
+Time Complexity: O(n)
+Space Complexity: O(n)
