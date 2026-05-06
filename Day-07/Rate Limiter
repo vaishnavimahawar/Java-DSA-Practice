@@ -1,0 +1,24 @@
+import java.util.*;
+
+class RateLimiter {
+    private Map<String, List<Long>> userRequests = new HashMap<>();
+    private static final int LIMIT = 100;
+    private static final long WINDOW = 60 * 60 * 1000; // 1 hour
+
+    public boolean allowRequest(String userId) {
+        long now = System.currentTimeMillis();
+
+        userRequests.putIfAbsent(userId, new ArrayList<>());
+        List<Long> timestamps = userRequests.get(userId);
+
+        // remove old requests
+        timestamps.removeIf(time -> (now - time) > WINDOW);
+
+        if (timestamps.size() < LIMIT) {
+            timestamps.add(now);
+            return true;
+        }
+
+        return false;
+    }
+}
